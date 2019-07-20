@@ -1,0 +1,52 @@
+
+<div class="box">
+    <div class="content">
+      <div class="heading">
+        <div class="columns is-mobile is-centered">
+          <div class="column">
+            <p class="subtitle" *ngIf="isorderchart">Order Chart</p>
+            <p class="subtitle" *ngIf="!isorderchart">Payment Chart</p>
+          </div>
+          <div class="column has-text-right">
+              <label class="toggle is-small" style="width: 150px;text-align: left;">                
+                  <input class="toggle-checkbox" type="checkbox" (change)="checkOrderPayment();">
+                  <div class="toggle-switch"></div>
+                  <span class="toggle-label" *ngIf="isorderchart">Orders</span>
+                  <span class="toggle-label" *ngIf="!isorderchart">Payments</span>
+                </label>
+            <a class="button is-rounded is-small" (click)="load()">
+              <fa-icon icon="spinner"></fa-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <loading-container *ngIf="isorderchart" [loadable]="(orderchart$ | async)">
+        <highcharts-chart 
+          [Highcharts]="Highcharts"  
+          [constructorType]="chartConstructor"
+          [options]="(orderchart$ | async).chartdata"
+          [callbackFunction]="chartCallback"
+          [(update)]="updateFlag"
+          [oneToOne]="oneToOneFlag"
+          [runOutsideAngular]="false" 
+          style="width: 100%; height: 400px; display: block;"
+        ></highcharts-chart>        
+    </loading-container>
+
+    <loading-container *ngIf="!isorderchart" [loadable]="(paymentchart$ | async)">
+    <highcharts-chart
+          [Highcharts]="Highcharts"  
+          [constructorType]="chartConstructor"
+          [options]="(paymentchart$ | async).chartdata"
+          [callbackFunction]="chartCallback"
+          [(update)]="updateFlag"
+          [oneToOne]="oneToOneFlag"
+          [runOutsideAngular]="false" 
+          style="width: 100%; height: 400px; display: block;"
+        ></highcharts-chart>
+    </loading-container>
+      
+
+    </div>
+  </div>

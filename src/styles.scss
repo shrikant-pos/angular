@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+// Set your brand colors 
+$primary: #3F51B5;
+$info: #FFDD00;
+$success: #11D625;
+$warning: yellow;
+$danger: #B92D00;
+$light: #ccc;
+$dark: #444;
+$grey:#f0f0f0;
+$white:#fff;
+
+@import './assets/bulma/scss/bulma.scss';
+
+body {
+  font-weight: 100;
+  background: $grey;
+  font-size: .9rem;
+}
+
+*:focus {
+  outline:none;
+}
+
+.subtitle.is-6 {
+  font-size: .9rem;
+}
+
+html {
+  background: $grey;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.box {
+  padding: 1.05rem;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 0px rgba(10, 10, 10, 0.1)
+}
+
+.subtitle, .modal-card-title {
+  line-height: 1;
+  font-weight: 100;
+  font-size: 1.10rem;
+}
+.modal-card-head, .modal-card-foot{
+  padding: 16px;
+}
+
+.content ul {
+  list-style: none;
+}
+
+.menu-label{
+  color: $dark;
+}
+
+.field:not(:last-child){
+  padding-bottom: 0%;
+}
+
+.tabs{
+  margin-bottom: 1rem !important;
+}
+
+/* Ripple effect V2 *******************************************************************/
+.button,a,.link, .pagination-previous, .pagination-next ,
+.pagination-link {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+  user-select: none;
+}
+.button:after,a:after,.link:after , .pagination-previous:after, .pagination-next:after ,
+.pagination-link:after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+.button:active:after ,a:active:after,.link:active:after, 
+.pagination-previous:active:after, .pagination-next:active:after ,
+.pagination-link:active:after {
+  transform: scale(0, 0);
+  opacity: .2;
+  transition: 0s;
+}
+/* Ripple effect V2 *******************************************************************/

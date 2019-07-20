@@ -1,0 +1,121 @@
+<div class="columns">
+
+  <div class="column is-two-thirds-desktop" aria-label="Menu items">
+
+    <div class="field has-addons">
+      <p class="control has-icons-left" style="width:100%">
+        <input class="input is-rounded is-small" style="padding-left:2.5rem;" type="text"
+          placeholder="Search Menu Item">
+        <span class="icon is-small is-left">
+          <fa-icon icon="search"></fa-icon>
+        </span>
+      </p>
+      <p class="control">
+        <a class="button is-primary is-small is-rounded">
+          Search
+        </a>
+      </p>
+    </div>
+
+    <div class="tabs">
+      <ul>
+        <li [ngClass]="{'is-active': tabcode === ''}"><a (click)="onTabChange('');">All</a></li>
+        <li [ngClass]="{'is-active': tabcode === 'hd'}"><a (click)="onTabChange('hd');">Hot Drinks</a></li>
+        <li [ngClass]="{'is-active': tabcode === 'cd'}"><a (click)="onTabChange('cd');">Cold Drinks</a></li>
+        <li [ngClass]="{'is-active': tabcode === 'sn'}"><a (click)="onTabChange('sn');">Snacks</a></li>
+        <li [ngClass]="{'is-active': tabcode === 'ot'}"><a (click)="onTabChange('ot');">Others</a></li>
+      </ul>
+    </div>
+
+    <loading-container [loadable]="(menustate$ | async)">
+      <div class="columns is-1 is-mobile is-multiline">
+        <div class="column" *ngFor="let item of (menus$ | async)">
+          <div class="box menu-item link" (click)="addmenuitem(item)">
+            <div class="content has-text-centered">
+              <div>{{item.title}}</div>
+              <div style="font-weight:bold;">R {{item.rate}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </loading-container>
+
+  </div>
+
+  <div class="column" aria-label="KOT list">
+
+    <div class="box">
+      <div class="content">
+
+        <div *ngIf="(order$ | async)" class="columns is-mobile" style="margin-bottom:0%">
+          <h4 class="column">Table {{(order$ | async).tablecode}}</h4>          
+        </div>
+
+        <table class="table is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Menu Item</th>
+              <th>Rate</th>
+              <th>Quantity</th>
+              <th class="has-text-right">Price</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="(order$ | async)">
+            <tr *ngFor="let item of (order$ | async).items">              
+              <td class="delete is-danger" style="margin-top: 8px;" (click)="removeorder(item)"></td>
+              <td>{{item.menutitle}}</td>
+              <td>{{item.menurate}}</td>
+              <td><input style="width: 60px" min="0" max="999" class="input is-rounded has-text-right is-small" (change)="updatemenuitem(item)"
+                type="number" placeholder="1" [(ngModel)]="item.quantity">
+              </td>
+              <td class="has-text-right">{{item.menurate * item.quantity| currency:'INR':'symbol-narrow'}}</td>
+            </tr>
+
+
+          </tbody>
+        </table>
+
+        <div class="box" style="box-shadow:none;">
+          <div class="content">
+            <div class="columns is-mobile">
+              <div class="column is-one-third">
+                <div class="block">                  
+                  <a class="button is-small is-rounded is-primary" style="width:100px;margin-bottom: 10px;">Pay
+                    Now</a>
+                  <a class="button is-small is-rounded is-danger" style="width:100px;margin-bottom: 10px;">Cancel</a>
+                </div>
+              </div>
+
+              <div class="column">
+                <div class="columns is-mobile">
+                  <div class="column" style="padding:0.2rem 0.5rem;">Total Amount</div>
+                  <div class="column has-text-right" style="padding:0.2rem 0.5rem;">{{total| currency:'INR':'symbol-narrow'}}
+                  </div>
+                </div>                
+                <div class="columns is-mobile">
+                  <div class="column" style="padding:0.2rem 0.5rem;">Tax(CGST,SGST)</div>
+                  <div class="column has-text-right" style="padding:0.2rem 0.5rem;">{{total* tax| currency:'INR':'symbol-narrow'}}
+                  </div>
+                </div>                
+                <div class="columns is-mobile">
+                  <div class="column" style="padding:0.2rem 0.5rem;font-size: 20px;"><b>Payable</b></div>
+                  <div class="column has-text-right" style="padding:0.2rem 0.5rem;font-size: 20px;"><b>
+                      {{total + total* tax| currency:'INR':'symbol-narrow'}}</b>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

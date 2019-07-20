@@ -1,0 +1,23 @@
+<div class="tabs">
+  <ul>
+    <li [ngClass]="{'is-active': tabindex === 0}"><a (click)="onTabChange(0);">All Tables</a></li>
+    <li [ngClass]="{'is-active': tabindex === 1}"><a (click)="onTabChange(1);">Available</a></li>
+    <li [ngClass]="{'is-active': tabindex === 2}"><a (click)="onTabChange(2);">Occupied</a></li>
+    <li disabled="disabled" [ngClass]="{'is-active': tabindex === 3}"><a>Take Away</a></li>
+    <li [ngClass]="{'is-active': tabindex === 4}"><a>Third Party</a></li>
+    <li [ngClass]="{'is-active': tabindex === 5}"><a>Corporate</a></li>
+  </ul>
+</div>
+<loading-container [loadable]="(tables$ | async)">
+<div class="columns is-1 is-mobile is-centered is-multiline">
+ 
+    <div class="column" *ngFor="let item of (tbls$ | async)">
+      <app-round-table *ngIf='item.type===1' [table-no]="item.table_no" [table-bill]="item.bill_amt"
+        [order-time]="item.elapsed_time" [occupied]="item.status==2"></app-round-table>
+      <app-square-table *ngIf="item.type===2" [table-no]="item.table_no" [table-bill]="item.bill_amt"
+        [order-time]="item.elapsed_time" [occupied]="item.status==2"></app-square-table>
+    </div>
+
+</div>
+
+</loading-container>

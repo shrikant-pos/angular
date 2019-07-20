@@ -1,0 +1,149 @@
+$primary: #3F51B5;
+$info: #FFDD00;
+$success: #11D625;
+$warning: yellow;
+$danger: #B92D00;
+$light: #ccc;
+$dark: #444;
+$grey:#f0f0f0;
+$white:#fff;
+
+.main-menu {  
+  background: $white;
+  // border-right: 1px solid #e5e5e5;
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  //height: 100%;
+  left: 0;
+  width: 75px;
+  // overflow: hidden;
+  // z-index: 1000;
+  // margin-bottom: 20px;
+  box-shadow: 0 1px 6px rgba(10,10,10,.1), 0 0 0 0px rgba(10,10,10,.1);
+}
+
+.main-menu li>a {  
+  color: #c0c0c0;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  -webkit-transition: .4s ease-in;
+    -moz-transition:  .4s ease-in;
+    transition:  .4s ease-in;
+  // border-bottom: 1px solid #f0f0f0
+}
+fa-icon{
+  margin: 0 auto;
+}
+
+.main-menu .nav-icon {
+  position: relative;
+  display: table-cell;
+  width: 75px;
+  height: 36px;
+  /* padding-left: 20px; */
+  margin-left: 0px;
+  padding: 0px 20px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  height: 48px;  
+}
+
+.main-menu>ul.logout {
+  position: absolute;
+  width: 75px;
+  bottom: 0;
+}
+
+
+.main-menu li:hover>a,
+nav.main-menu li.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {  
+  color: white;
+  background-color: $primary;
+  // -webkit-transform: rotateY(360deg);
+  //     -moz-transform: rotateY(360deg);
+  //     transform: rotateY(360deg);
+}
+
+// @font-face {
+//   font-family: 'Titillium Web';
+//   font-style: normal;
+//   font-weight: 300;
+//   src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+// }
+
+// @media(min-width: 1088px)
+// .is-visible-sidenav{
+//   display: block;
+// };
+
+/**
+ * Tooltip Styles
+ */
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 30%;
+  left: 110%;
+  // margin-bottom: 5px;
+  // margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: $primary;
+  color: $white;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 67%;
+  left: 110%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid $primary;
+  border-top: 5px solid $primary;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  opacity: 1;
+}

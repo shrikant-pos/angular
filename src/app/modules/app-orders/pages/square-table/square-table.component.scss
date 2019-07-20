@@ -1,0 +1,45 @@
+.table_square{
+    background: url('../../../../../assets/images/table.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 152px;
+    width: 300px;
+    text-align: center;
+}
+
+.occupied{
+    background: url('../../../../../assets/images/sel_table_square.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 152px;
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+.order_time{
+    padding-top: 25px;
+    text-align: right;
+    padding-right: 35px;
+    font-size: 16px;
+}
+
+.table_no{
+    margin-top: -10px;
+    font-size: 40px;
+    font-weight: 600;
+    margin-left: -4px;
+}
+
+.table_bill{
+    margin-top: -5px;
+    text-align: left;
+    font-size: 16px;
+    padding-left: 35px;
+}
+
+.white {
+    color: white;
+  }

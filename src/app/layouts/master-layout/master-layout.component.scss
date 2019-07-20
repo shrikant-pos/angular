@@ -1,0 +1,15 @@
+.page-content{
+    margin: 0 16px;
+    background: #f0f0f0;
+    margin-top: 72px;
+}
+
+th{
+    font-weight:600;
+}
+
+@media screen and (max-width: 1088px){
+    .is-visible-sidenav {
+      display: none;
+  }
+  }

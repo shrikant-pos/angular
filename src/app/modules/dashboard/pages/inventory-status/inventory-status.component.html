@@ -1,0 +1,54 @@
+<div class="box">
+    <div class="content">
+      <div class="heading">
+        <div class="columns is-mobile is-centered">
+          <div class="column">
+            <p class="subtitle">Inventory Status</p>
+          </div>
+          <div class="column has-text-right ">
+              <a class="button is-rounded is-small" (click)="load()">
+                  <fa-icon icon="spinner"></fa-icon>
+                </a>
+          </div>
+        </div>
+      </div>
+
+      <loading-container [loadable]="(inventorystatus$ | async)">
+      <table class="table is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Inventory</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let itm of (inventorystatus$ | async).inventorystatus">
+            <td>{{itm.title}}</td>
+            <td><progress class="progress" 
+              [ngClass]="{'is-success': itm.quantity>70 , 'is-info': itm.quantity<71 && itm.quantity>20, 'is-danger': itm.quantity<21}"
+              [value]="itm.quantity" max="100">{{itm.quantity}}}%</progress>
+            </td>
+            <td><a class="button is-rounded is-small" [routerLink]="itm.actionlink"
+              [ngClass]="{'is-success': itm.quantity>70 , 'is-info': itm.quantity<71 && itm.quantity>20, 'is-danger': itm.quantity<21}"
+              [attr.disabled]="itm.isactionable ? 'disabled' : null">Send Requisition</a></td>
+          </tr>          
+
+        </tbody>
+      </table>
+    </loading-container>
+
+
+      <nav class="pagination is-rounded is-small" role="navigation" aria-label="pagination">
+        <a class="pagination-previous">Previous</a>
+        <a class="pagination-next">Next page</a>
+        <ul class="pagination-list" style="margin-top:-.5rem;">
+          <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+          <li><span class="pagination-ellipsis">&hellip;</span></li>
+          <li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
+        </ul>
+      </nav>
+
+
+    </div>
+  </div>
