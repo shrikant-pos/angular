@@ -43,7 +43,7 @@ export class AppOrderComponent implements OnInit {
     this.load();
 
     this.menus$ = this.menustate$.pipe(
-      map(t => t.menus.filter(m => m.typecode === this.tabcode || this.tabcode === ''))
+      map(t => t.menus.filter(m => m.code === this.tabcode || this.tabcode === ''))
     );
 
     
@@ -99,7 +99,7 @@ export class AppOrderComponent implements OnInit {
   onTabChange(tab) {
     this.tabcode = tab;
     this.menus$ = this.menustate$.pipe(
-      map(t => t.menus.filter(m => m.typecode === this.tabcode || this.tabcode === ''))
+      map(t => t.menus.filter(m => m.code === this.tabcode || this.tabcode === ''))
     );
     this.menus$.subscribe((chart: any) => { console.log(chart); });
   }
