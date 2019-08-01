@@ -1,4 +1,4 @@
-import * as Inventorymodel from 'src/app/models/Inventory.model';
+import * as Inventorymodel from 'src/app/models/inventory.model';
 import * as app from '../../application.state';
 
 export interface InventoryState extends app.ApplicationState {

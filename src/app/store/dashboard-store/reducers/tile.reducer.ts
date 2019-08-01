@@ -1,4 +1,4 @@
-import { TileState, DefaultTileState } from '../states/Tile.state';
+import { TileState, DefaultTileState } from '../states/tile.state';
 import { TileActions, TileActionsTypes } from '../actions/tile.actions';
 import * as app from '../../application.state';
 

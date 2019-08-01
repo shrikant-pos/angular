@@ -1,6 +1,6 @@
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { ICustomerModel } from '../models/Customer.model';
+import { ICustomerModel } from '../models/customer.model';
 
 
 export function mockCustomerApiResponse(): Observable<ICustomerModel[]> {

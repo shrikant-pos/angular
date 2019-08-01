@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import { ICustomerModel } from 'src/app/models/Customer.model';
+import { ICustomerModel } from 'src/app/models/customer.model';
 
 //#region  Order Customer Action Types
 export enum CustomerActionsTypes {

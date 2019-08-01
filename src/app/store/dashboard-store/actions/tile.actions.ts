@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import { ITileModel } from 'src/app/models/Tile.model';
+import { ITileModel } from 'src/app/models/tile.model';
 
 //#region  Order Tile Action Types
 export enum TileActionsTypes {
