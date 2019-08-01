@@ -12,11 +12,11 @@ export class MenuEffects {
   constructor(private actions$: Actions, private http: HttpClient) { }
   
   @Effect()
-  Save_addmenus = this.actions$.pipe( ofType(actions.MenuActionsTypes.Save_addmenus),
+  Load_getmenus_title = this.actions$.pipe( ofType(actions.MenuActionsTypes.Load_getmenus_title),
     switchMap(({ payload }) => {
-      return this.http.post('http://localhost:8180/api/menu/addmenus',payload).pipe(
-        map((response: any) => new actions.Save_addmenusSuccess({ menus: response.data,cnt: response.cnt})),
-        catchError(error => of(new actions.Save_addmenusError(error)))
+      return this.http.post('http://localhost:8180/api/menu/getmenus_title',payload).pipe(
+        map((response: any) => new actions.Load_getmenus_titleSuccess({ menus: response.data,cnt: response.cnt})),
+        catchError(error => of(new actions.Load_getmenus_titleError(error)))
       );      
     }),
   );

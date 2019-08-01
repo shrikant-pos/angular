@@ -4,26 +4,26 @@ import { IPaggingModel } from '../../../models/pagging.model';
 
 export enum MenuActionsTypes {
 	 
-	Save_addmenus = '[addmenus] LOAD',
-	Save_addmenusSuccess = '[addmenus] LOAD SUCCESS',
-	Save_addmenusError = '[addmenus] LOAD ERROR',
+	Load_getmenus_title = '[getmenus_title] LOAD',
+	Load_getmenus_titleSuccess = '[getmenus_title] LOAD SUCCESS',
+	Load_getmenus_titleError = '[getmenus_title] LOAD ERROR',
   }
 
 
-export class Save_addmenus implements Action {
-	readonly type = MenuActionsTypes.Save_addmenus;
-	constructor(public payload: {pagging:IPaggingModel}) { }	
+export class Load_getmenus_title implements Action {
+	readonly type = MenuActionsTypes.Load_getmenus_title;
+	constructor(public payload: {title,pagging:IPaggingModel}) { }	
 }
 
-export class Save_addmenusSuccess implements Action {
-	readonly type = MenuActionsTypes.Save_addmenusSuccess;
+export class Load_getmenus_titleSuccess implements Action {
+	readonly type = MenuActionsTypes.Load_getmenus_titleSuccess;
 	constructor(public payload: {menus: IMenuModel[] ,cnt:number}) { }	
 }
 
-export class Save_addmenusError implements Action {
-	readonly type = MenuActionsTypes.Save_addmenusError;
+export class Load_getmenus_titleError implements Action {
+	readonly type = MenuActionsTypes.Load_getmenus_titleError;
 	constructor(public error: any) {}
 }
 	
 
-  export type MenuActions = Save_addmenus | Save_addmenusSuccess | Save_addmenusError 
+  export type MenuActions = Load_getmenus_title | Load_getmenus_titleSuccess | Load_getmenus_titleError 
