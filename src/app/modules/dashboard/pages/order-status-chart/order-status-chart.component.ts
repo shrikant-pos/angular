@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { ApplicationState } from 'src/app/store/application.state';
 import { Observable } from 'rxjs';
-import { OrderStatusChartState } from 'src/app/store/dashboard-store/states/OrderStatusChart.state';
+import { OrderStatusChartState } from 'src/app/store/dashboard-store/states/orderstatuschart.state';
 import { Store } from '@ngrx/store';
 import { LoadOrderStatusChart } from 'src/app/store/dashboard-store/actions/orderstatuschart.actions';
 
